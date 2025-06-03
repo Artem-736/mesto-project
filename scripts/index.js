@@ -29,8 +29,17 @@ const jobInput = profileFormElement.querySelector('.popup__input_type_descriptio
 profileEditButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
+
+  checkInputValidity(profileFormElement, nameInput);
+  checkInputValidity(profileFormElement, jobInput);
+
+  const inputList = Array.from(profileFormElement.querySelectorAll('.popup__input'));
+  const button = profileFormElement.querySelector('.popup__button');
+  toggleButtonState(inputList, button);
+
   openModal(profilePopup);
 });
+
 
 // Обработчик сохранения профиля
 function handleProfileFormSubmit(evt) {
