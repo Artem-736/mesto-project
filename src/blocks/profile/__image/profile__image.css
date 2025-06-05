@@ -7,6 +7,15 @@
   background-size: cover;
   background-position: center;
   margin: 0 29px 0 0;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+  position: relative;
+}
+
+.profile__image:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 740px) {
