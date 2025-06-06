@@ -34,4 +34,4 @@
 - **Webpack** (сборка, dev-сервер, минификация, транспиляция)
 -- **GitHub Pages** (хостинг)
 
-Проект выполнен в рамках учебной программы [Яндекс Практикум](https://practicum.yandex.ru/) по программе [Фронтенд-разработчик](https://practicum.yandex.ru/frontend-developer/)
+## Проект выполнен в рамках учебной программы [Яндекс Практикум](https://practicum.yandex.ru/) по программе [Фронтенд-разработчик](https://practicum.yandex.ru/frontend-developer/)
