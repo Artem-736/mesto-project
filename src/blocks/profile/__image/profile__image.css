@@ -9,7 +9,6 @@
   margin: 0 29px 0 0;
   object-fit: cover;
   display: block;
-  z-index: 1;
   position: relative;
 }
 

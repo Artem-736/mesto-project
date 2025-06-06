@@ -1,19 +1,21 @@
 .profile__avatar {
     position: relative;
+    margin-right: 30px;
     height: 120px;
     width: 120px;
     border-radius: 60px;
     overflow: hidden;
     background-color: #000;
     cursor: pointer;
+    z-index: 1;
   }
   
   .profile__avatar:hover {
     opacity: 0.6;
   }
 
-  .profile__avatar::after {
-    content: '';
+  .profile__avatar-edit-icon {
+    display: inline-block;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,9 +29,10 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 2;
+    pointer-events: auto;
   }
   
-  .profile__avatar:hover::after {
+  .profile__avatar:hover .profile__avatar-edit-icon {
     opacity: 1;
   }
 

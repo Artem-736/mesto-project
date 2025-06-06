@@ -12,7 +12,7 @@ document.getElementById('avatar-img').src = avatarImg;
 import logoImg from '../images/logo.svg';
 document.getElementById('logo-img').src = logoImg;
 
-import { updateUserInfo, addCard, getUserInfo, getInitialCards, deleteCard, likeCard, unlikeCard, updateUserAvatar } from '../utils/utils.js';
+import { updateUserInfo, addCard, getUserInfo, getInitialCards, deleteCard, likeCard, unlikeCard, updateUserAvatar } from '../utils/api.js';
 
 
 // @todo: Темплейт карточки
@@ -52,7 +52,9 @@ profileEditButton.addEventListener('click', () => {
 // Обработчик сохранения профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  
+  const submitButton = profileFormElement.querySelector('.popup__button');
+  renderLoading(true, submitButton);
+
   updateUserInfo(nameInput.value, jobInput.value)
     .then((data) => {
       profileName.textContent = data.name;
@@ -61,8 +63,12 @@ function handleProfileFormSubmit(evt) {
     })
     .catch((err) => {
       console.error('Ошибка обновления профиля:', err);
+    })
+    .finally(() => {
+      renderLoading(false, submitButton);
     });
 }
+
 
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 
@@ -97,15 +103,21 @@ addCardButton.addEventListener('click', () => {
 // Обработка отправки формы добавления карточки
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  
+  const submitButton = cardFormElement.querySelector('.popup__button');
+  renderLoading(true, submitButton);
+
   addCard(cardNameInput.value, cardLinkInput.value)
     .then((cardData) => {
       const newCard = createCard(cardData, currentUserId);
       cardsContainer.prepend(newCard);
       closeModal(cardPopup);
+      cardFormElement.reset();
     })
     .catch((err) => {
       console.error('Ошибка при добавлении карточки:', err);
+    })
+    .finally(() => {
+      renderLoading(false, submitButton);
     });
 }
 
@@ -115,6 +127,11 @@ cardFormElement.addEventListener('submit', handleCardFormSubmit);
 cardPopup.querySelector('.popup__close').addEventListener('click', () => {
   closeModal(cardPopup);
 });
+
+// Сохранение...
+function renderLoading(isLoading, buttonElement, loadingText = "Сохранение...", defaultText = "Сохранить") {
+  buttonElement.textContent = isLoading ? loadingText : defaultText;
+}
 
 
 // @todo: Функция создания карточки
@@ -230,6 +247,8 @@ profileAvatar.addEventListener('click', () => {
 // Обработчик сабмита формы аватара
 avatarForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  const submitButton = avatarForm.querySelector('.popup__button');
+  renderLoading(true, submitButton);
 
   const avatarUrl = avatarInput.value;
 
@@ -242,6 +261,9 @@ avatarForm.addEventListener('submit', (evt) => {
     .catch((err) => {
       console.error('Ошибка обновления аватара:', err);
       alert('Не удалось обновить аватар');
+    })
+    .finally(() => {
+      renderLoading(false, submitButton);
     });
 });
 
