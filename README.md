@@ -33,3 +33,5 @@
 - **API** (REST): `fetch` + `Promise` + `Promise.all`
 - **Webpack** (сборка, dev-сервер, минификация, транспиляция)
 -- **GitHub Pages** (хостинг)
+
+Проект выполнен в рамках учебной программы [Яндекс Практикум](https://practicum.yandex.ru/) по программе [Фронтенд-разработчик](https://practicum.yandex.ru/web/)
